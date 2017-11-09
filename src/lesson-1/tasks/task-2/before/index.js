@@ -4,7 +4,8 @@ import {
     getCount,
     getEntityById,
     getFirstEntity,
-    getLastEntity
+    getLastEntity,
+    filter
 } from '../after/dataManager';
 
 import Entity from '../after/entityManager';
@@ -30,8 +31,12 @@ const woman = new Entity({
 // Get data for man
 const firstEntity = man.getEntity();
 
+console.log("firstEntity = ", firstEntity);
+
 // Get data for woman
 const secondEntity = woman.getEntity();
+
+console.log("secondEntity = ", secondEntity);
 
 // Add man to collection
 add(firstEntity);
@@ -45,18 +50,28 @@ const all = getEntities();
 // Print entities count
 const count = getCount();
 
+console.log("count = ", count);
+
 // Get entity by entity.id
 const entityById = getEntityById(0);
+
+console.log("entityById = ", entityById);
 
 // Get first entity
 const first = getFirstEntity();
 
+console.log("firstElement = ", first);
+
 // Get last entity
 const last = getLastEntity();
 
+console.log("lastElement = ", last);
+
 // Print all entities
-console.log(all);
+console.log("all = ", all);
 
 const filtered = filter(function (item) {
     return item.age > 20 && item.sex === 'male'
-})
+});
+
+console.log("filtered = ", filtered);
