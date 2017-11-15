@@ -2,6 +2,6 @@ import sum from '../after';
 
 const f = sum();
 
-f(1);
-f(2);
-f(3);
+console.log(f(1)); // 1
+console.log(f(2)); // 3
+console.log(f(3)); // 6
