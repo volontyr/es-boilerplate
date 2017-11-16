@@ -1,3 +1,5 @@
+'use strict';
+
 import {
     addEntity as add,
     getEntities,
@@ -14,7 +16,7 @@ import Entity from '../after/entityManager';
 const man = new Entity({
     id: 0,
     firstName: 'Tomas',
-    lastName: 'Anderson',
+    secondName: 'Anderson',
     age: 21,
     sex: 'male'
 });
@@ -23,7 +25,7 @@ const man = new Entity({
 const woman = new Entity({
     id: 1,
     firstName: 'Lisa',
-    lastName: 'Black',
+    secondName: 'Black',
     age: 19,
     sex: 'female'
 });
@@ -43,19 +45,29 @@ add(secondEntity);
 // Get all entities
 const all = getEntities();
 
+console.log(`all=${JSON.stringify(all, null, 2)}`);
+
 // Print entities count
 const count = getCount();
+
+console.log(`count=${count}`);
 
 // Get entity by entity.id
 const entityById = getEntityById(0);
 
+console.log(`entityById=${JSON.stringify(entityById, null, 2)}`);
+
 // Get first entity
 const first = getFirstEntity();
+
+console.log(`first=${JSON.stringify(first, null, 2)}`);
 
 // Get last entity
 const last = getLastEntity();
 
-// Filter entities by callback
-const filtered = filter(item => item.sex === 'male' && item.age > 20);
+console.log(`last=${JSON.stringify(last, null, 2)}`);
 
-console.log(filtered);
+// Filter entities by callback
+const filtered = filter(({ sex, age } = {}) => sex === 'male' && age > 20);
+
+console.log(`filtered=${JSON.stringify(filtered, null, 2)}`);
