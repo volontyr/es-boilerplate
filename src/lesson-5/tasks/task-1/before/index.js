@@ -1,3 +1,5 @@
+'use strict';
+
 import {
     Entity,
     talk,
@@ -8,7 +10,7 @@ const bender = new Entity({
     id:        2716057,
     firstName: 'Bender',
     surName:   'Bending',
-    lastName:  'Rodriguez',
+    secondName:'Rodriguez',
     sex:       'robot'
 });
 
@@ -18,7 +20,7 @@ bender.say();
 bender.sayAge(); // hm undefined? Lets fix it...
 
 Object.setPrototypeOf(bender, age);
-bender.fixAge(4) // now I'm 4 years old, let's check it...
+bender.fixAge(4); // now I'm 4 years old, let's check it...
 
 Object.setPrototypeOf(bender, talk);
 bender.sayAge(); // no more undefined :)
