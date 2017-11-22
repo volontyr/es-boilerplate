@@ -67,16 +67,16 @@ dataManager.add(firstEntity);
 // Add woman to collection
 dataManager.add(secondEntity);
 
-const totalViews1 = dataManager.getEntityTotalViews(firstEntity.id);
+const totalViews1 = getEntityTotalviews(firstEntity.id);
 console.log(totalViews1); // 46
 
-const totalViews2 = dataManager.getEntityTotalViews(firstEntity.id, [1, 'youtube', 3]);
+const totalViews2 = getEntityTotalviews(firstEntity.id, [1, 3]);
 console.log(totalViews2); // 23
 
-const totalViews3 = dataManager.getEntityTotalViews(firstEntity.id, ['facebook', 'twitter']);
+const totalViews3 = getEntityTotalviews(firstEntity.id, ['facebook', 'twitter']);
 console.log(totalViews3); // 23
 
-const totalViews4 = dataManager.getEntityTotalViews(firstEntity.id, null, total => total * 3);
+const totalViews4 = getEntityTotalviews(firstEntity.id, null, total => total * 3);
 console.log(totalViews4); // 138
 
 const entitiesSorted = dataManager.getEntitiesSortedByPopularity();
