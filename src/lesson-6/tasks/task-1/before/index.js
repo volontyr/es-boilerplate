@@ -1,13 +1,5 @@
 import {
-    addEntity as add,
-    getEntities,
-    getEntitiesSortedByPopularity,
-    getCount,
-    getEntityById,
-    getFirstEntity,
-    getLastEntity,
-    getEntityTotalviews,
-    filter
+    DataManager
 } from '../after/dataManager';
 
 import Entity from '../after/entityManager';
@@ -16,7 +8,7 @@ import Entity from '../after/entityManager';
 const man = new Entity({
     id: 0,
     firstName: 'Tomas',
-    lastName: 'Anderson',
+    secondName: 'Anderson',
     age: 21,
     sex: 'male',
     social: [
@@ -38,22 +30,54 @@ const man = new Entity({
     ]
 });
 
+const woman = new Entity({
+    id: 1,
+    firstName: 'Tamara',
+    secondName: 'Anderson',
+    age: 21,
+    sex: 'male',
+    social: [
+        {
+            id: 1,
+            title: 'facebook',
+            views: 45
+        },
+        {
+            id: 2,
+            title: 'youtube',
+            views: 23
+        },
+        {
+            id: 3,
+            title: 'twitter',
+            views: 2
+        }
+    ]
+});
+
 // Get data for man
 const firstEntity = man.getEntity();
+// Get data for woman
+const secondEntity = woman.getEntity();
+
+const dataManager = new DataManager();
 
 // Add man to collection
-add(firstEntity);
+dataManager.add(firstEntity);
+// Add woman to collection
+dataManager.add(secondEntity);
 
-const totalViews1 = getEntityTotalviews();
+const totalViews1 = dataManager.getEntityTotalViews(firstEntity.id);
 console.log(totalViews1); // 46
 
-const totalViews2 = getEntityTotalviews([1, 3]);
+const totalViews2 = dataManager.getEntityTotalViews(firstEntity.id, [1, 'youtube', 3]);
 console.log(totalViews2); // 23
 
-const totalViews3 = getEntityTotalviews(['facebook', 'twitter']);
+const totalViews3 = dataManager.getEntityTotalViews(firstEntity.id, ['facebook', 'twitter']);
 console.log(totalViews3); // 23
 
-const totalViews3 = getEntityTotalviews(null, total => total * 3);
-console.log(totalViews3); // 138
+const totalViews4 = dataManager.getEntityTotalViews(firstEntity.id, null, total => total * 3);
+console.log(totalViews4); // 138
 
-const entitiesSorted = getEntitiesSortedByPopularity();
+const entitiesSorted = dataManager.getEntitiesSortedByPopularity();
+console.log(entitiesSorted);
