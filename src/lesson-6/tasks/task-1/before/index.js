@@ -79,5 +79,4 @@ console.log(totalViews3); // 23
 const totalViews4 = getEntityTotalviews(firstEntity.id, null, total => total * 3);
 console.log(totalViews4); // 138
 
-const entitiesSorted = dataManager.getEntitiesSortedByPopularity();
-console.log(entitiesSorted);
+const entitiesSorted = dataManager.getEntitiesSortedByPopularity();console.log(entitiesSorted);
